@@ -1,0 +1,59 @@
+#----------------------------------------------------------------------------------------------------#
+#weightings
+
+"""Each question type has a weighting - the higher the weighting, the more likely it is to come up as a question in your practise. The weightings must add to 100. Set a weighting to 0 if you don\'t want to be asked that type of question, or set it to \'eq\' if you want it to have the same weighting as any other question type with eq. eq will be automatically calculated based on the other weightings, and if using eq, the weightings you\'ve manually given numbers don\'t have to add to 100"""
+chance_weighting = [[20], [20], [20], [20], [20]]
+
+#----------------------------------------------------------------------------------------------------#
+#py
+
+"""Pythagorean triples"""
+pythag_triples = [[3,4,5], [5,12,13], [7,24,25], [8,15,17],[9,40,41]]
+"""The list of triples you could be asked about"""
+
+"""Enable multipliers"""
+enable_multipliers = True
+"""Whether you allow the triples to be shown in multiplied form to make it harder"""
+
+"""Multipliers"""
+multipliers = [1,1,1,1,2,3,4,5,6]
+"""The numbers you will allow the triples to be multiplied by. Multiple of the same number increases the likelihood of that multiplier being picked"""
+
+#----------------------------------------------------------------------------------------------------#
+#sq
+
+"""Lowest base number"""
+squares_start = 13
+"""The lowest number that, paired with its square, you will be quizzed on"""
+
+"""Highest base number"""
+squares_end = 19
+"""The highest number that, paired with its square, you will be quizzed on"""
+
+#----------------------------------------------------------------------------------------------------#
+#cu
+
+"""Lowest base number"""
+cubes_start = 6
+"""The lowest number that, paired with its cube, you will be quizzed on"""
+
+"""Highest base number"""
+cubes_end = 9
+"""The highest number that, paired with its cube, you will be quizzed on"""
+
+#----------------------------------------------------------------------------------------------------#
+#pr
+
+"""Prime factors numbers"""
+prime_fact = [2026, 'temp', 2, 1013]
+"""The numbers that you'll be asked the prime factors of"""
+
+#----------------------------------------------------------------------------------------------------#
+#div
+
+"""Divider numbers"""
+divisibility_test_nums = [3, 4, 8, 9]
+"""The numbers that you will be asked if a large, random number is divisible by. Each of the defualt divider numbers have tricks to help you figure it out which are useful to know and practise."""
+
+#----------------------------------------------------------------------------------------------------#
+#scores

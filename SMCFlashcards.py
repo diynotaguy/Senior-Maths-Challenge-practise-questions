@@ -1,5 +1,6 @@
 import random
 import math
+import json
 
 #----------------------------------------------------------------------------------------------------#
 
@@ -7,19 +8,51 @@ questions = 0
 global score
 score = 0
 
-pythag_triples = [[3,4,5], [5,12,13], [7,24,25], [8,15,17],[9,40,41]]
-enable_multipliers = True
-multipliers = [1,1,1,1,2,3,4,5,6]
+#----------------------------------------------------------------------------------------------------#
 
-squares_start = 13
-squares_end = 19
+def valid_int():
+    """ Asks for user input until it is a valid integer. Returns input when valid"""
+    inpt = input()
+    valid = False
+    while valid == False:
+        valid = True
+        try:
+            assert str(int(inpt)) == inpt
+        except:
+            valid = False
+            inpt = input(print('Please enter a valid integer: '))
 
-cubes_start = 6
-cubes_end = 9
+    return inpt
 
-prime_fact = [2026, 'temp', 2, 1013]
+#----------------------------------------------------------------------------------------------------#
+        
+def pythag_triples_test(pythag_triples, enable_multipliers, multipliers):
+    set = random.randint(0,len(pythag_triples)-1)
+    sides = [0,1,2]
+    removed_side = random.randint(0, 2)
+    sides.remove(removed_side)
 
-divisibility_test_nums = [3, 4, 8, 9]
+    multiplier = 1
+    if enable_multipliers:
+        multiplier = multipliers[random.randint(0, len(multipliers)-1)]
+
+    given_side_1 = pythag_triples[set][sides[0]]*multiplier
+    given_side_2 = pythag_triples[set][sides[1]]*multiplier
+    ans = pythag_triples[set][removed_side] * multiplier
+    reward = True
+
+    user_ans = int(input(f'Complete the pythagorean triple:\n{given_side_1}, {given_side_2}, '))
+    while user_ans != ans:
+        print('Incorrect, try again.\n')
+        if multiplier != 1:
+            print('HINT: It\'s a pythagorean triple that\'s been multiplied by a constant')
+        user_ans = int(input(f'Complete the pythagorean triple:\n{given_side_1}, {given_side_2}, '))
+        reward = False
+
+    print('Correct!\n\n')
+    if reward:
+        global score
+        score += 1
 
 #----------------------------------------------------------------------------------------------------#
 
@@ -53,36 +86,6 @@ def squares_test(squares):
         global score
         score += 1
 
-#----------------------------------------------------------------------------------------------------#
-        
-def pythag_triples_test(pythag_triples, enable_multipliers, multipliers):
-    set = random.randint(0,len(pythag_triples)-1)
-    sides = [0,1,2]
-    removed_side = random.randint(0, 2)
-    sides.remove(removed_side)
-
-    multiplier = 1
-    if enable_multipliers:
-        multiplier = multipliers[random.randint(0, len(multipliers)-1)]
-
-    given_side_1 = pythag_triples[set][sides[0]]*multiplier
-    given_side_2 = pythag_triples[set][sides[1]]*multiplier
-    ans = pythag_triples[set][removed_side] * multiplier
-    reward = True
-
-    user_ans = int(input(f'Complete the pythagorean triple:\n{given_side_1}, {given_side_2}, '))
-    while user_ans != ans:
-        print('Incorrect, try again.\n')
-        if multiplier != 1:
-            print('HINT: It\'s a pythagorean triple that\'s been multiplied by a constant')
-        user_ans = int(input(f'Complete the pythagorean triple:\n{given_side_1}, {given_side_2}, '))
-        reward = False
-
-    print('Correct!\n\n')
-    if reward:
-        global score
-        score += 1
-        
 #----------------------------------------------------------------------------------------------------#    
 
 cubes = []
@@ -170,63 +173,26 @@ def divis_test(divisibility_test_nums):
 
 #----------------------------------------------------------------------------------------------------#
 
-#----------------------------------------------------------------------------------------------------#
-
-py = pythag_triples_test(pythag_triples, enable_multipliers, multipliers)
-sq = squares_test(squares)
-cu = cubes_test(cubes)
-pr = prime_fact_test(prime_fact)
-div = divis_test(divisibility_test_nums)
-
-eq = -1 #equal
-chance_weighting = [[py, eq], [sq, eq], [cu,eq], [pr, 0], [div, eq]]
-
-eq_sum = 0
-eq_freq = 0
-for test in chance_weighting:
-    weight = test[1]
-    if weight == -1:
-        eq_freq += 1
-    else:
-        sum = sum + weight
-
-eq = (100 - sum) / eq_freq
-
-#----------------------------------------------------------------------------------------------------#
-
-def menu():
+def setup():
     print('Welcome to the Senior Maths Challenge (SMC) memorisation programme! You will be asked short answer maths questions to help you remember things that will be useful to know during the SMC or similar challenges. Have fun! :D')
     print('\n-----------------------------------------------------------------------------------------------\n')
+
+    print("""What would you like to do?
+    1) Start questions
+    
+    """)
+    
     if (input('Would you like to change the settings? (y/n)')).lower() == 'y':
-        setting_change = input("""
-    Input the number of the seting you would like to change:
-    1) The question weightings
-    2) The question settings
-    3) None (go back)
-""")
-        if setting_change == 1:
-            print('Each question type has a weighting - the higher the weighting, the more likely it is to come up as a question in your practise. The weightings must add to 1. Set a weighting to 0 if you don\'t want to be asked that type of question, or set it to \'eq\' if you want it to have the same weighting as any other question type with eq. eq will be automatically calculated based on the other weightings.')
-            change_weightings()
-        elif setting_change == 2:
-            change_q_settings()
-        else:
-            menu()
-    
-#----------------------------------------------------------------------------------------------------#
-
-def change_weightings():
-
-    
-#----------------------------------------------------------------------------------------------------#
-
-def change_q_settings():
-
+        change_settings()
 
 #----------------------------------------------------------------------------------------------------#
 
+from settings_funcs import *
+setup()
+from settings import *
 running = True
 while running:
-    
+
     test_select = random.randint(0, 100)
 
     lower_bound = 0

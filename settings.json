@@ -1,0 +1,82 @@
+
+{
+    "Chance weighting": 
+{
+    "id": "general",
+    "data": [[20], [20], [20], [20], [20]],
+    "description": "Each question type has a weighting - the higher the weighting, the more likely it is to come up as a question in your practise. The weightings must add to 100. Set a weighting to 0 if you don't want to be asked that type of question, or set it to 'eq' if you want it to have the same weighting as any other question type with eq. eq will be automatically calculated based on the other weightings, and if using eq, the weightings you've manually given numbers don't have to add to 100"
+},
+
+
+
+"Pythagorean triples":
+{
+    "id": "py",
+    "data": [[3,4,5], [5,12,13], [7,24,25], [8,15,17],[9,40,41]],
+    "description": "The list of triples you could be asked about"
+},
+
+"Enable multipliers":
+{
+    "id": "py",
+    "data": true,
+    "description": "Whether you allow the triples to be shown in multiplied form to make it harder"
+},
+
+"Multipliers":
+{
+    "id": "py",
+    "data": [1,1,1,1,2,3,4,5,6],
+    "description": "The numbers you will allow the triples to be multiplied by. Multiple of the same number increases the likelihood of that multiplier being picked"
+},
+
+
+
+"Lowest base number - squares":
+{
+    "id": "sq",
+    "data": 13,
+    "description": "The lowest number that, paired with its square, you will be quizzed on"
+},
+
+"Highest base number - squares":
+{
+    "id": "sq",
+    "data": 19,
+    "description": "The highest number that, paired with its square, you will be quizzed on"
+},
+
+
+
+"Lowest base number - cubes":
+{
+    "id": "cu",
+    "data": 6,
+    "description": "The lowest number that, paired with its cube, you will be quizzed on"
+},
+
+"Highest base number - cubes":
+{
+    "id": "cu",
+    "data": 9,
+    "description": "The highest number that, paired with its cube, you will be quizzed on"
+},
+
+
+
+"Prime factors numbers":
+{
+    "id": "pr",
+    "data": [2026, "temp", 2, 1013],
+    "description": "The numbers that you'll be asked the prime factors of"
+},
+
+
+
+"Divider numbers":
+{
+    "id": "div",
+    "data": [3, 4, 8, 9],
+    "description": "The numbers that you will be asked if a large, random number is divisible by. Each of the defualt divider numbers have tricks to help you figure it out which are useful to know and practise."
+}
+}
